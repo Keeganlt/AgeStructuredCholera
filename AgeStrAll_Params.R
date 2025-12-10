@@ -43,7 +43,7 @@ initial.state.o <- c(
 
 ## shared-ish choices
 sigma      <- 1/2       # 2-day latent period
-beta.y     <- 1.5
+beta.y     <- 1.5      
 beta.o     <- 1.2
 
 v.a.y      <- 0.3

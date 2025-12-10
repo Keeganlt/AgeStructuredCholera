@@ -3,6 +3,7 @@ library(ggplot2)
 library(lhs)
 library(dplyr) #need for bind_rows for incidences_sum
 library(reshape2) #need for melt for total.inc_long
+library(tidyr)
 
 # runSEIR takes the SEIR model parameters and initial condition 
 # and returns a time series for each group
