@@ -201,7 +201,7 @@ ggplot(df, aes(x = time, y = value)) +
 
 ## changed parameter call (intervention)
 
-age.out <- AgeStructSEIRfunct(
+age.out2 <- AgeStructSEIRfunct(
   ## youth block
   beta.y          = beta.y,
   sigma           = sigma,
@@ -219,7 +219,7 @@ age.out <- AgeStructSEIRfunct(
   q.y             = q.y,
   delta.y         = delta.y,
   theta.m.y       = theta.m.y,
-  theta.s.y       = 0.5,
+  theta.s.y       = 0.8,
   gamma.a.y       = gamma.a.y,
   gamma.m.y       = gamma.m.y,
   gamma.s.y       = gamma.s.y,
@@ -261,3 +261,15 @@ age.out <- AgeStructSEIRfunct(
   step.size       = 1,
   freq.dependent  = TRUE
 )
+
+df2 <- age.out2$SEIR.output %>%
+  pivot_longer(-time, names_to = "compartment", values_to = "value")
+
+ggplot(df2, aes(x = time, y = value)) +
+  geom_line() +
+  facet_wrap(~ compartment, scales = "free_y") +
+  theme_bw() +
+  labs(title = "SEIR Compartments Over Time",
+       x = "Time",
+       y = "Count")
+
