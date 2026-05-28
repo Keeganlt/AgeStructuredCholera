@@ -116,6 +116,8 @@ set.seed(123)
 
 source("AgeStrAll.R")
 
+# Original parameter call
+
 age.out <- AgeStructSEIRfunct(
   ## youth block
   beta.y          = beta.y,
@@ -195,3 +197,67 @@ ggplot(df, aes(x = time, y = value)) +
   labs(title = "SEIR Compartments Over Time",
        x = "Time",
        y = "Count")
+
+
+## changed parameter call (intervention)
+
+age.out <- AgeStructSEIRfunct(
+  ## youth block
+  beta.y          = beta.y,
+  sigma           = sigma,
+  v.a.y           = v.a.y,
+  v.m.y           = v.m.y,
+  v.sh.y          = v.sh.y,
+  v.abx.y         = v.abx.y,
+  epsilon.a.y     = epsilon.a.y,
+  epsilon.s.y     = epsilon.s.y,
+  epsilon.m.T.y   = epsilon.m.T.y,
+  epsilon.s.T.y   = epsilon.s.T.y,
+  alpha.m.y       = alpha.m.y,
+  alpha.s.y       = alpha.s.y,
+  tau.y           = tau.y,
+  q.y             = q.y,
+  delta.y         = delta.y,
+  theta.m.y       = theta.m.y,
+  theta.s.y       = 0.5,
+  gamma.a.y       = gamma.a.y,
+  gamma.m.y       = gamma.m.y,
+  gamma.s.y       = gamma.s.y,
+  gamma.m.abx.y   = gamma.m.abx.y,
+  gamma.s.abx.y   = gamma.s.abx.y,
+  mu.m.y          = mu.m.y,
+  mu.s.y          = mu.s.y,
+  initial.state.y = initial.state.y,
+  
+  ## adult block – after initial.state.y the args are positional
+  beta.o          = beta.o,
+  v.a.o           = v.a.o,
+  v.m.o           = v.m.o,
+  v.sh.o          = v.sh.o,
+  v.abx.o         = v.abx.o,
+  epsilon.a.o     = epsilon.a.o,
+  epsilon.s.o     = epsilon.s.o,
+  epsilon.m.T.o   = epsilon.m.T.o,
+  epsilon.s.T.o   = epsilon.s.T.o,
+  alpha.m.o       = alpha.m.o,
+  alpha.s.o       = alpha.s.o,
+  tau.o           = tau.o,
+  q.o             = q.o,
+  delta.o         = delta.o,
+  theta.m.o       = theta.m.o,
+  theta.s.o       = theta.s.o,
+  gamma.a.o       = gamma.a.o,
+  gamma.m.o       = gamma.m.o,
+  gamma.s.o       = gamma.s.o,
+  gamma.m.abx.o   = gamma.m.abx.o,
+  gamma.s.abx.o   = gamma.s.abx.o,
+  mu.m.o          = mu.m.o,
+  mu.s.o          = mu.s.o,
+  initial.state.o = initial.state.o,
+  omega           = omega,
+  l               = l,
+  
+  ## options
+  step.size       = 1,
+  freq.dependent  = TRUE
+)
